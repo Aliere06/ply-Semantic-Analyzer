@@ -1,0 +1,148 @@
+Created by PLY (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> assignment_expression
+Rule 1     assignment_expression -> text_assignment
+Rule 2     assignment_expression -> date_assignment
+Rule 3     assignment_expression -> number_assignment
+Rule 4     assignment_expression -> cardinal_assignment
+Rule 5     text_assignment -> TYPE ID ASSIGN_OP TEXT
+Rule 6     date_assignment -> TYPE ID ASSIGN_OP DATE
+Rule 7     number_assignment -> TYPE ID ASSIGN_OP NUMBER
+Rule 8     cardinal_assignment -> TYPE ID ASSIGN_OP CARDINAL
+
+Terminals, with rules where they appear
+
+ASSIGN_OP            : 5 6 7 8
+CARDINAL             : 8
+DATE                 : 6
+ID                   : 5 6 7 8
+NUMBER               : 7
+TEXT                 : 5
+TYPE                 : 5 6 7 8
+error                : 
+
+Nonterminals, with rules where they appear
+
+assignment_expression : 0
+cardinal_assignment  : 4
+date_assignment      : 2
+number_assignment    : 3
+text_assignment      : 1
+
+
+state 0
+
+    (0) S' -> . assignment_expression
+    (1) assignment_expression -> . text_assignment
+    (2) assignment_expression -> . date_assignment
+    (3) assignment_expression -> . number_assignment
+    (4) assignment_expression -> . cardinal_assignment
+    (5) text_assignment -> . TYPE ID ASSIGN_OP TEXT
+    (6) date_assignment -> . TYPE ID ASSIGN_OP DATE
+    (7) number_assignment -> . TYPE ID ASSIGN_OP NUMBER
+    (8) cardinal_assignment -> . TYPE ID ASSIGN_OP CARDINAL
+
+    TYPE            shift and go to state 6
+
+    assignment_expression          shift and go to state 1
+    text_assignment                shift and go to state 2
+    date_assignment                shift and go to state 3
+    number_assignment              shift and go to state 4
+    cardinal_assignment            shift and go to state 5
+
+state 1
+
+    (0) S' -> assignment_expression .
+
+
+
+state 2
+
+    (1) assignment_expression -> text_assignment .
+
+    $end            reduce using rule 1 (assignment_expression -> text_assignment .)
+
+
+state 3
+
+    (2) assignment_expression -> date_assignment .
+
+    $end            reduce using rule 2 (assignment_expression -> date_assignment .)
+
+
+state 4
+
+    (3) assignment_expression -> number_assignment .
+
+    $end            reduce using rule 3 (assignment_expression -> number_assignment .)
+
+
+state 5
+
+    (4) assignment_expression -> cardinal_assignment .
+
+    $end            reduce using rule 4 (assignment_expression -> cardinal_assignment .)
+
+
+state 6
+
+    (5) text_assignment -> TYPE . ID ASSIGN_OP TEXT
+    (6) date_assignment -> TYPE . ID ASSIGN_OP DATE
+    (7) number_assignment -> TYPE . ID ASSIGN_OP NUMBER
+    (8) cardinal_assignment -> TYPE . ID ASSIGN_OP CARDINAL
+
+    ID              shift and go to state 7
+
+
+state 7
+
+    (5) text_assignment -> TYPE ID . ASSIGN_OP TEXT
+    (6) date_assignment -> TYPE ID . ASSIGN_OP DATE
+    (7) number_assignment -> TYPE ID . ASSIGN_OP NUMBER
+    (8) cardinal_assignment -> TYPE ID . ASSIGN_OP CARDINAL
+
+    ASSIGN_OP       shift and go to state 8
+
+
+state 8
+
+    (5) text_assignment -> TYPE ID ASSIGN_OP . TEXT
+    (6) date_assignment -> TYPE ID ASSIGN_OP . DATE
+    (7) number_assignment -> TYPE ID ASSIGN_OP . NUMBER
+    (8) cardinal_assignment -> TYPE ID ASSIGN_OP . CARDINAL
+
+    TEXT            shift and go to state 9
+    DATE            shift and go to state 10
+    NUMBER          shift and go to state 11
+    CARDINAL        shift and go to state 12
+
+
+state 9
+
+    (5) text_assignment -> TYPE ID ASSIGN_OP TEXT .
+
+    $end            reduce using rule 5 (text_assignment -> TYPE ID ASSIGN_OP TEXT .)
+
+
+state 10
+
+    (6) date_assignment -> TYPE ID ASSIGN_OP DATE .
+
+    $end            reduce using rule 6 (date_assignment -> TYPE ID ASSIGN_OP DATE .)
+
+
+state 11
+
+    (7) number_assignment -> TYPE ID ASSIGN_OP NUMBER .
+
+    $end            reduce using rule 7 (number_assignment -> TYPE ID ASSIGN_OP NUMBER .)
+
+
+state 12
+
+    (8) cardinal_assignment -> TYPE ID ASSIGN_OP CARDINAL .
+
+    $end            reduce using rule 8 (cardinal_assignment -> TYPE ID ASSIGN_OP CARDINAL .)
+
