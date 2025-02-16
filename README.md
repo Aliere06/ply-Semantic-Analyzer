@@ -12,3 +12,5 @@ Semantic analyzer for type-correct assignment expressions
   <br> *30/1/2020*
 - **CARDINAL:** cardinal and ordinal compass directions
   <br> *north, southwest, east*
+
+![image](https://github.com/user-attachments/assets/38599319-eb9f-436d-acc4-7a5c5c5abadd)
