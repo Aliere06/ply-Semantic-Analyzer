@@ -10,8 +10,15 @@ def set_error_message(expected_type: str, problem_token):
         'txt': 'text(txt)',
         'num': 'number(num)'
     }
-    expected_type = type_formats.get(expected_type, expected_type)
-    error_message = f"Semantic Error: {problem_token} isn't a {expected_type} value"
+    type_values : dict[str, str] = {
+        'txt': '"text"',
+        'date': '14/02/2025',
+        'num': '123',
+        'cardinal': 'north'
+    }
+    type_format = type_formats.get(expected_type, expected_type)
+    error_message = f"Semantic Error: {problem_token} isn't a {type_format} value.\n"
+    error_message = error_message + f"Replace it with a valid {type_format} like: {type_values[expected_type]}"
 
 # GRAMMAR RULES
 def p_assignment_ex(p):
@@ -62,6 +69,7 @@ while True:
     expression = input()
     parser.parse(expression)
     result = "Valid syntactic expression\n" if errors == 0 else "Invalid syntactic expression\n"
+    error_message = "" if errors >0 else error_message
     lexer.input(expression)
     token_data = []
     while True:
